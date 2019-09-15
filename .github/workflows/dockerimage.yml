@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Docker
 
 on:
   push:
@@ -12,7 +12,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: build and push
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.fucktoken }}
       run: |
         docker build . --tag docker.pkg.github.com/oott123/docker-mediawiki/mediawiki:latest
         docker login docker.pkg.github.com -u oott123 -p $GITHUB_TOKEN
