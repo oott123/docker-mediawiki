@@ -11,7 +11,9 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: build and push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         docker build . --tag docker.pkg.github.com/oott123/docker-mediawiki/mediawiki:latest
-        docker login docker.pkg.github.com -u oott123 -p ${{ secrets.GITHUB_TOKEN }}
+        docker login docker.pkg.github.com -u oott123 -p $GITHUB_TOKEN
         docker push docker.pkg.github.com/oott123/docker-mediawiki/mediawiki:latest
