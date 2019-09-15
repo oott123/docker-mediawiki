@@ -1,10 +1,10 @@
 FROM mediawiki:1.33
 RUN docker-php-source extract && \
   apt-get update && \
-  wget https://getcomposer.org/composer.phar -O /usr/local/bin/composer && \
-  chmod +x /usr/local/bin/composer && \
   apt-get install -y curl wget librsvg2-dev librsvg2-bin unzip sudo && \
   apt-get install -y liblua5.1-0-dev && \
+  wget https://getcomposer.org/composer.phar -O /usr/local/bin/composer && \
+  chmod +x /usr/local/bin/composer && \
   git clone https://gerrit.wikimedia.org/r/mediawiki/php/luasandbox.git /usr/local/src/luasandbox && \
   docker-php-ext-configure /usr/local/src/luasandbox && \
   docker-php-ext-install /usr/local/src/luasandbox && \
