@@ -10,7 +10,7 @@ RUN docker-php-source extract && \
   docker-php-ext-install /usr/local/src/luasandbox && \
   rm -rf /usr/local/src/luasandbox && \
   apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng-dev && \
-  printf "\n" | pcel install mcrypt && \
+  printf "\n" | pecl install mcrypt && \
   docker-php-ext-enable mcrypt && \
   docker-php-ext-install -j$(nproc) iconv && \
   docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
