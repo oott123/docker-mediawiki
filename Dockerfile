@@ -1,4 +1,8 @@
 FROM mediawiki:1.33
+
+COPY start.sh /bin/start.sh
+COPY runjobs.sh /bin/runjobs.sh
+
 RUN docker-php-source extract && \
   apt-get update && \
   apt-get install -y curl wget librsvg2-dev librsvg2-bin unzip sudo && \
@@ -19,5 +23,9 @@ RUN docker-php-source extract && \
   printf "\n" | pecl install imagick && \
   docker-php-ext-enable imagick && \
   docker-php-source delete && \
+  chmod +x /bin/start.sh && \
+  chmod +x /bin/runjobs.sh && \
   apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false && \
   rm -rf /var/lib/apt/lists/*
+
+CMD [ "/bin/start.sh" ]
